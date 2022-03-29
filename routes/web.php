@@ -20,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::resource('student', StudentController::class);
+
+Route::get('/student/search', [StudentController::class, 'search']);

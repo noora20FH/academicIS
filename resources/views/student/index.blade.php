@@ -16,6 +16,15 @@
         <p>{{ $message }}</p>
     </div>
     @endif
+
+
+    <form action="/student/search" method="GET">
+		<input type="text" name="search" placeholder="Search Student data by nim" value="{{ old('search') }}">
+		<input type="submit" value="search">
+	</form>
+
+
+
     <table class="table table-bordered">
             <tr>
                 <th>Nim</th>

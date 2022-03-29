@@ -2,7 +2,8 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use DB;
+
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -14,14 +15,22 @@ class StudentController extends Controller
     public function index()
     {
         // the eloquent function to displays data
-        $student = Student::all(); // Mengambil semua isi tabel
+        
+        $student = DB::table('student_')->paginate(3);
         $paginate = Student::orderBy('id_student', 'asc')->paginate(3);
-        return view('student.index', ['student_' => $student,'paginate'=>$paginate]);
+        return view('student.index', ['student_'=>$student],['paginate'=>$paginate]);
     }
 
     public function create()
     {
         return view('student.create');
+    }
+
+
+    public function search(Request $request){
+        $search = $request->search;
+        $student = Student::where('name','like','%'.$search.'%')->paginate();
+        return view('student.index', ['student_' => $student]);
     }
 
     public function store(Request $request)
@@ -54,6 +63,7 @@ class StudentController extends Controller
         // displays detail data by finding based on Student Nim for editing
         $Student = Student::where('nim', $nim)->first();
         return view('student.edit', compact('Student'));
+        return redirect()->route('student.index');
     }
 
     public function update(Request $request, $nim)
