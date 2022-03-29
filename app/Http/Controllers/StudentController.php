@@ -16,7 +16,7 @@ class StudentController extends Controller
         // the eloquent function to displays data
         $student = Student::all(); // Mengambil semua isi tabel
         $paginate = Student::orderBy('id_student', 'asc')->paginate(3);
-        return view('student.index', ['student' => $student,'paginate'=>$paginate]);
+        return view('student.index', ['student_' => $student,'paginate'=>$paginate]);
     }
 
     public function create()
@@ -32,6 +32,8 @@ class StudentController extends Controller
         'Name' => 'required',
         'Class' => 'required',
         'Major' => 'required',
+        'Address' => 'required',
+        'Date_of_Birth' => 'required',
         ]);
         // eloquent function to add data
         Student::create($request->all());
@@ -62,6 +64,8 @@ class StudentController extends Controller
         'Name' => 'required',
         'Class' => 'required',
         'Major' => 'required',
+        'Address' => 'required',
+        'Date_of_Birth' => 'required',
         ]);
         //Eloquent function to update the data
         Student::where('nim', $nim)
@@ -70,6 +74,8 @@ class StudentController extends Controller
             'name'=>$request->Name,
             'class'=>$request->Class,
             'major'=>$request->Major,
+            'Address'=>$request->Address,
+            'Date_of_Birth'=>$request->Date_of_Birth,
             ]);
         //if the data successfully updated, will return to main page
         return redirect()->route('student.index')

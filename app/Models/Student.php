@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model; //Model Eloquent
 
 class Student extends Model // Model definition
 {
-    protected $table='student'; // Eloquent will create a student model to store records in the student table
+    protected $table='student_'; // Eloquent will create a student model to store records in the student table
     protected $primaryKey = 'id_student'; // Calling DB contents with primary key
     /**
     * The attributes that are mass assignable.
@@ -22,5 +22,7 @@ class Student extends Model // Model definition
     'Name',
     'Class',
     'Major',
+    'Address',
+    'Date_of_Birth',
     ];
 }

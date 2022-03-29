@@ -38,6 +38,16 @@
                     <input type="Major" name="Major" class="form-control" id="Major" ariadescribedby="
                     Major" >
                 </div>
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input type="Address" name="Address" class="form-control" id="Address" ariadescribedby="
+                    Address" >
+                </div>
+                <div class="form-group">
+                    <label for="Date_of_Birth">Date of Birth</label>
+                    <input type="date" name="Date_of_Birth" class="form-control" id="Date_of_Birth" ariadescribedby="
+                    Date_of_Birth" >
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
