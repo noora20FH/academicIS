@@ -22,8 +22,7 @@
                 @method('PUT')
                     <div class="form-group">
                         <label for="Nim">Nim</label>
-                        <input type="text" name="Nim" class="form-control" id="Nim" value="{{ $Student->nim }}" ariadescribedby="
-                        Nim" >
+                        <input type="text" name="Nim" class="form-control" id="Nim" value="{{ $Student->nim }}" ariadescribedby="Nim" >
                     </div>
                     <div class="form-group">
                         <label for="Name">Name</label>
