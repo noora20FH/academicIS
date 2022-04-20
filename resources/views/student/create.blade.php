@@ -30,14 +30,20 @@
                 </div>
                 <div class="form-group">
                     <label for="Class">Class</label>
-                    <input type="Class" name="Class" class="form-control" id="Class" ariadescribedby="
-                    Class" >
+                    <select name="Class" class="form-control">
+                        @foreach($class as $cls)
+                        <option value="{{$cls->id}}">{{$cls->class_name}}</option>
+                        @endforeach
+                    </select>
+                    <!--<input type="Class" name="Class" class="form-control" id="Class" ariadescribedby="
+                    Class" >-->
                 </div>
                 <div class="form-group">
                     <label for="Major">Major</label>
                     <input type="Major" name="Major" class="form-control" id="Major" ariadescribedby="
                     Major" >
                 </div>
+                
                 <div class="form-group">
                     <label for="Address">Address</label>
                     <input type="Address" name="Address" class="form-control" id="Address" ariadescribedby="

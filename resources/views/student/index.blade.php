@@ -35,11 +35,11 @@
                 <th>Date of Birth</th>
                 <th width="280px">Action</th>
             </tr>
-        @foreach ($student_ as $mhs)
+        @foreach ($paginate as $mhs)
         <tr>
             <td>{{ $mhs ->nim }}</td>
             <td>{{ $mhs ->name }}</td>
-            <td>{{ $mhs ->class }}</td>
+            <td>{{ $mhs ->class->class_name }}</td>
             <td>{{ $mhs ->major }}</td>
             <td>{{ $mhs ->Address }}</td>
             <td>{{ $mhs ->Date_of_Birth }}</td>
@@ -55,4 +55,7 @@
         </tr>
         @endforeach
     </table>
+    <div class="d-flex float-right">
+        {{$paginate->links('pagination::bootstrap-4')}}
+    </div>
 @endsection
