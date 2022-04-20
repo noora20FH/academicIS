@@ -100,7 +100,7 @@ class StudentController extends Controller
         'Date_of_Birth' => 'required',
         ]);
         //Eloquent function to update the data
-        Student::with('class')->where('nim', $nim)->first();
+        $student= Student::with('class')->where('nim', $nim)->first();
             // ->update([
             //'nim'=>$request->Nim,
             //'name'=>$request->Name,
@@ -109,20 +109,20 @@ class StudentController extends Controller
             //'Address'=>$request->Address,
             //'Date_of_Birth'=>$request->Date_of_Birth,
             //]);
-            $student->nim = $request->get('Nim');
-            $student->nim = $request->get('Name');
-            $student->nim = $request->get('Class');
-            $student->nim = $request->get('Major');
-            $student->nim = $request->get('Address');
-            $student->nim = $request->get('Date_of_Birth');
-            $student->save();
+        $student->nim = $request->get('Nim');
+        $student->name = $request->get('Name');
+        //$student->class_id = $request->get('Class');
+        $student->major = $request->get('Major');
+        $student->Address = $request->get('Address');
+        $student->Date_of_Birth = $request->get('Date_of_Birth');
+        $student->save();
 
-            $class = new ClassModel;
-            $class->id = $request->get('class');
+        $class = new ClassModel;
+        $class->id = $request->get('Class');
 
             //eloquent function to update the data with belongs to relation
-            $student->class()->associate($class);
-            $student-> save();
+        $student->class()->associate($class);
+        $student-> save();
         //if the data successfully updated, will return to main page
             return redirect()->route('student.index')
             ->with('success', 'Student Successfully Updated');
