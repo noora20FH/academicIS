@@ -8,6 +8,7 @@
         <h2>KARTU HASIL SEMESTER (KHS)</h2>
     </div>
     <div class="my-3">
+        <!-- &ensp; -Kode ini nantinya akan membuat jarak antar kata menjadi sekitar dua spasi-->
         <p><b>Name &ensp; : </b>{{  $Student->name }}</p>
         <p><b>Nim &ensp;&ensp;&ensp;: </b>{{ $Student->nim }}</p>
         <p><b>Class &ensp;&ensp; : </b>{{ $Student->class->class_name }}</p>
