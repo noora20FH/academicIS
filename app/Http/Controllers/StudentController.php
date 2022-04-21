@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\ClassModel;
+use App\Models\Course;
+use App\Models\CourseStudent;
 
 class StudentController extends Controller
 {
@@ -126,6 +128,13 @@ class StudentController extends Controller
         //if the data successfully updated, will return to main page
             return redirect()->route('student.index')
             ->with('success', 'Student Successfully Updated');
+    }
+
+    public function mark($nim)
+    {
+        $Student = Student::with('course')->where('nim', $nim)->first();
+        $course_student = CourseStudent::all();
+        return view('student.mark', compact('Student','course_student'));
     }
 
     public function destroy( $nim)

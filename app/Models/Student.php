@@ -12,12 +12,15 @@ use App\Models\ClassModel;
 class Student extends Model // Model definition
 {
     protected $table='student_'; // Eloquent will create a student model to store records in the student table
-    protected $primaryKey = 'nim'; // Calling DB contents with primary key
+    protected $primaryKey = 'id_student'; // Calling DB contents with primary key
     /**
     * The attributes that are mass assignable.
     *
     * @var array
     */
+    //Guarded is the reverse of fillable. If fillable specifies which fields to be mass assigned,
+    // guarded specifies which fields are not mass assignable.
+    //protected $guarded =['id_student'];//
     protected $fillable = [
         'Nim',
         'Name',
@@ -38,4 +41,18 @@ class Student extends Model // Model definition
     public function class(){
         return $this->belongsTo(ClassModel::class);
     }
+
+    public function course(){
+        return $this->belongsToMany(Course::class, 'course_student', 'student_id')
+        ->withPivot('value');
+
+    }
+
+    public function search($query, array $searching)
+    {
+        $query->when($searching['search'] ?? false, function($query, $search){
+            return $query->where('name', 'like', '%'.$search.'%');
+        });
+    }
+
 }
